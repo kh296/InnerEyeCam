@@ -1,6 +1,6 @@
 # InnerEyeCam
 
-A package to simplify installation and use under MacOS of [InnerEye-DeepLearning](https://github.com/microsoft/InnerEye-DeepLearning) applications.
+Package to simplify installation and use under MacOS of [InnerEye-DeepLearning](https://github.com/microsoft/InnerEye-DeepLearning) applications.
 
 This package contains the following:
 
