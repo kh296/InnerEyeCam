@@ -1,0 +1,9 @@
+variables:
+  tenant_id: ''
+  subscription_id: ''
+  resource_group: ''
+  docker_shm_size: '440g'
+  workspace_name: ''
+  cluster: ''
+  azureml_datastore: ''
+  model_configs_namespace: 'ML.configs'
