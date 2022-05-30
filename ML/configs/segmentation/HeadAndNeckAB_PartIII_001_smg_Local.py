@@ -1,5 +1,5 @@
 from pathlib import Path
-from platform import platform
+from platform import system
 
 import pandas as pd
 
@@ -8,7 +8,7 @@ from InnerEye.ML.utils.split_dataset import DatasetSplits
 
 class HeadAndNeckAB_PartIII_001_smg_Local(ProstateBase):
     def __init__(self) -> None:
-        if "Linux" == platform():
+        if "Linux" == system():
             local_dataset=Path("/r02/voxtox/project_data_2022_nifti")
             output_to="/r02/voxtox/inner_eye_training"
         else:
