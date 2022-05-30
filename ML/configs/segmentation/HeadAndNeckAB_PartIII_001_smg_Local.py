@@ -1,4 +1,5 @@
 from pathlib import Path
+from platform import platform
 
 import pandas as pd
 
@@ -7,11 +8,16 @@ from InnerEye.ML.utils.split_dataset import DatasetSplits
 
 class HeadAndNeckAB_PartIII_001_smg_Local(ProstateBase):
     def __init__(self) -> None:
+        if "Linux" == platform():
+            local_dataset=Path("/r02/voxtox/project_data_2022_nifti")
+            output_to="/r02/voxtox/inner_eye_training"
+        else:
+            local_dataset=Path("/Users/karl/data/HeadAndNeck_PartIII_20220312")
+            output_to="/Users/karl/data/inner_eye_training"
         super().__init__(
             ground_truth_ids=[
                 "smg_left", "smg_right"],
-            #local_dataset=Path("/r02/voxtox/project_data_2022_nifti"),
-            local_dataset=Path("/Users/karl/data/HeadAndNeck_PartIII_20220312"),
+            local_dataset=local_dataset,
             crop_size=(16, 128, 128),
             test_crop_size=(128, 512, 512),
             inference_stride_size=(48, 512, 512),
@@ -23,7 +29,7 @@ class HeadAndNeckAB_PartIII_001_smg_Local(ProstateBase):
             dataset_csv="dataset_smg.csv",
             num_downsampling_paths=4,
             check_exclusive=False,
-            output_to="/Users/karl/data/inner_eye_training",
+            output_to=output_to,
         )
 
     def get_model_train_test_dataset_splits(
