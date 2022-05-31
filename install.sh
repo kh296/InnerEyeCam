@@ -19,6 +19,8 @@ do
        	cp ML/${FILE} ../InnerEye-DeepLearning/InnerEye/ML/${FILE}
 done
 
+cp ML/runner.py ../InnerEye-DeepLearning/runner.py
+
 # Create conda environment for running InnerEye-DeepLearning applications.
 source conda-setup.sh
 conda env remove --name InnerEyeCam
