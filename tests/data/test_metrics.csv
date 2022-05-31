@@ -1,0 +1,13 @@
+Patient,Structure,Dice,HausdorffDistance_mm,MeanDistance_mm
+18,smg_left,0.747,12.000,1.559
+37,smg_left,0.779,5.456,1.091
+28,smg_left,0.805,8.305,1.309
+75,smg_left,0.844,9.164,1.048
+57,smg_left,0.850,6.463,0.730
+65,smg_left,0.858,7.141,0.957
+65,smg_right,0.620,15.006,2.906
+18,smg_right,0.747,7.426,1.447
+28,smg_right,0.753,7.804,1.545
+37,smg_right,0.763,12.791,1.727
+75,smg_right,0.825,9.856,1.062
+57,smg_right,0.874,4.803,0.534
