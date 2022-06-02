@@ -30,4 +30,3 @@ source InnerEyeCam/conda-setup.sh
 conda env remove --name InnerEyeCam
 conda env create
 conda activate InnerEyeCam
-#pip install azureml-sdk[notebooks]

@@ -29,7 +29,7 @@ if __name__ == '__main__':
     # in the conda environment setup.
     if not Path("runner.log").exists():
         cmd = 'pip install azureml-sdk[notebooks]'
-        print(f"Running command: '{cmd}'")
+        print(f"Completing installation: '{cmd}'")
         cmd_output = subprocess.run(cmd.split(), capture_output=True, text=True)
         with open("runner.log", "w") as runner_log:
             now = datetime.now().strftime("%Y/%m/%d %H:%M:%S")
