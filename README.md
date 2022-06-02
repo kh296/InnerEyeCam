@@ -91,8 +91,9 @@ actual location.
                    InnerEye     InnerEyeCam
    ```
    When running on Azure, it's expected that all code should be in
-   a single directory tree: `InnerEye-DeepLearning`.  All subsequent
-   user modifications should then be in `InnerEye-DeepLearning/InnerEyeCam`.
+   a single directory tree: `InnerEye-DeepLearning`.  To fit in with
+   this, subsequent user modifications should be in
+   `InnerEye-DeepLearning/InnerEyeCam`.
 
 ## Preparing to run [InnerEye-DeepLearning](https://github.com/microsoft/InnerEye-DeepLearning)
 
