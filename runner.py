@@ -14,10 +14,9 @@ else:
 
 sys.path.insert(0, str(project_root))
 
-from InnerEye.ML import runner
-
 
 def main() -> None:
+    from InnerEye.ML import runner
     runner.run(project_root=project_root,
                yaml_config_file=Path(project_root)/"InnerEyeCam/settings.yml",
                post_cross_validation_hook=runner
@@ -30,6 +29,7 @@ if __name__ == '__main__':
     # in the conda environment setup.
     if not Path("runner.log").exists():
         cmd = 'pip install azureml-sdk[notebooks]'
+        print(f"Running command: '{cmd}'")
         cmd_output = subprocess.run(cmd.split(), capture_output=True, text=True)
         with open("runner.log", "w") as runner_log:
             now = datetime.now().strftime("%Y/%m/%d %H:%M:%S")
