@@ -11,7 +11,7 @@ conda activate InnerEyeCam
 # (https://black.readthedocs.io/en/stable/index.html).
 # This seems to prevent some crashes that otherwise
 # occur - reason not understood.
-black ${CONDA_PREFIX}/lib/python3.7/site-packages/black/cache.py
+black -q ${CONDA_PREFIX}/lib/python3.7/site-packages/black/cache.py
 
 # Run InnerEye-DeepLearning application.
 
