@@ -34,10 +34,11 @@ if __name__ == '__main__':
         with open("runner.log", "w") as runner_log:
             now = datetime.now().strftime("%Y/%m/%d %H:%M:%S")
             header = f"{now} - '{runner_path}'"
-            runner_log.write(len(header) * "=")
+            bannerline = min(80, len(header)) * "="
+            runner_log.write(bannerline)
             runner_log.write(f"\n{header}\n")
-            runner_log.write(len(header) * "=")
-            runner_log.write(f"\n{cmd}\n\n{cmd_output.stdout}")
+            runner_log.write(bannerline)
+            runner_log.write(f"\n\n{cmd}\n\n{cmd_output.stdout}")
 
     main()
     pass
