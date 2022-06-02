@@ -6,11 +6,10 @@ import sys
 # Allow for this file to be in a directory
 # inside or alongside InnerEye-DeepLearning.
 runner_path = Path(__file__).resolve()
-project_root = runner_path.parent.parent
-if "InnerEye-DeepLearning" == project_root.name:
-    project_root = project_root
+if (runner_path.parent.parent / "InnerEye-DeepLearning").exists():
+    project_root = runner_path.parent.parent / "InnerEye-DeepLearning"
 else:
-    project_root = project_root / "InnerEye-DeepLearning"
+    project_root = runner_path.parent.parent
 
 sys.path.insert(0, str(project_root))
 
