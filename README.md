@@ -79,7 +79,20 @@ actual location.
       [InnerEye-DeepLearning](https://github.com/microsoft/InnerEye-DeepLearning)
       applications.
 
-    - At this point, all code needed is under `InnerEye-DeepLearning`.
+5. After installation, the directory structure should be as follows:
+   ```
+                   |
+        ----------------------
+        |                    |       
+   InnerEyeCam     InnerEye-DeepLearning
+                             |
+                      ----------------
+                      |              |
+                   InnerEye     InnerEyeCam
+   ```
+   When running on Azure, it's expected that all code should be in
+   a single directory tree: `InnerEye-DeepLearning`.  All subsequent
+   user modifications should then be in `InnerEye-DeepLearning/InnerEyeCam`.
 
 ## Preparing to run [InnerEye-DeepLearning](https://github.com/microsoft/InnerEye-DeepLearning)
 
