@@ -1,8 +1,17 @@
+from datetime import datetime
 from pathlib import Path
 import subprocess
 import sys
 
-project_root = Path(__file__).resolve().parent.parent
+# Allow for this file to be in a directory
+# inside or alongside InnerEye-DeepLearning.
+runner_path = Path(__file__).resolve()
+project_root = runner_path.parent.parent
+if "InnerEye-DeepLearning" == project_root.name:
+    project_root = project_root
+else:
+    project_root = project_root / "InnerEye-DeepLearning"
+
 sys.path.insert(0, str(project_root))
 
 from InnerEye.ML import runner
@@ -16,7 +25,19 @@ def main() -> None:
 
 
 if __name__ == '__main__':
-    cmd = 'pip install azureml-sdk[notebooks]'
-    subprocess.run(cmd.split(), capture_output=True)
+    # Workaround to obtain older versions of some packages.
+    # These are downgrades to some of the packages installed
+    # in the conda environment setup.
+    if not Path("runner.log").exists():
+        cmd = 'pip install azureml-sdk[notebooks]'
+        cmd_output = subprocess.run(cmd.split(), capture_output=True, text=True)
+        with open("runner.log", "w") as runner_log:
+            now = datetime.now().strftime("%Y/%m/%d %H:%M:%S")
+            header = f"{now} - '{runner_path}'"
+            runner_log.write(len(header) * "=")
+            runner_log.write(f"\n{header}\n")
+            runner_log.write(len(header) * "=")
+            runner_log.write(f"\n{cmd}\n\n{cmd_output.stdout}")
+
     main()
     pass
