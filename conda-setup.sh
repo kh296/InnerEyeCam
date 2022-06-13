@@ -1,7 +1,4 @@
-case "$(uname -s)" in
-    Linux) CONDA_HOME="/r02/voxtox/harrison/miniconda3";;
-    Darwin) CONDA_HOME="/opt/miniconda3";;
-esac
+CONDA_HOME="${HOME}/miniconda3"
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$(${CONDA_HOME}/bin/conda shell.bash hook 2> /dev/null)"
