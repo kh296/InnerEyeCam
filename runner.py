@@ -26,10 +26,13 @@ if __name__ == '__main__':
     # Workaround to obtain older versions of some packages.
     # These are downgrades to some of the packages installed
     # in the conda environment setup.
+    innereye_version = "v0.3"
     if not Path("runner.log").exists():
-        cmd = 'pip install azureml-sdk[notebooks]'
-        print(f"Completing installation: '{cmd}'")
-        cmd_output = subprocess.run(cmd.split(), capture_output=True, text=True)
+        if "v0.3" == innereye_version:
+            cmd = 'pip install azureml-sdk[notebooks]'
+            print(f"Completing installation: '{cmd}'")
+            cmd_output = subprocess.run(
+                    cmd.split(), capture_output=True, text=True)
         with open("runner.log", "w") as runner_log:
             now = datetime.now().strftime("%Y/%m/%d %H:%M:%S")
             header = f"{now} - '{runner_path}'"
@@ -37,7 +40,7 @@ if __name__ == '__main__':
             runner_log.write(bannerline)
             runner_log.write(f"\n{header}\n")
             runner_log.write(bannerline)
-            runner_log.write(f"\n\n{cmd}\n\n{cmd_output.stdout}")
-
+            if "v0.3" == innereye_version:
+                runner_log.write(f"\n\n{cmd}\n\n{cmd_output.stdout}")
     main()
     pass
