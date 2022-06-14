@@ -25,6 +25,10 @@ do
        	cp InnerEyeCam/ML/${INNEREYE_VERSION}/${FILE} InnerEye/ML/${FILE}
 done
 
+# Copy model configuration files from InnerEyeCam/${INNEREYE_VERSION}
+# to InnerEye-DeepLearning/InnerEyeCam
+cp -rp InnerEyeCam/ML/${INNEREYE_VERSION}/configs InnerEyeCam/ML
+
 # Copy modified environment file from InnerEyeCam to InnerEye-DeepLearning.
 cp InnerEyeCam/${INNEREYE_VERSION}/environment.yml ./environment.yml
 
