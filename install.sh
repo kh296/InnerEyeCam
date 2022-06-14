@@ -27,7 +27,8 @@ done
 
 # Copy model configuration files from InnerEyeCam/${INNEREYE_VERSION}
 # to InnerEye-DeepLearning/InnerEyeCam
-cp -rp InnerEyeCam/ML/${INNEREYE_VERSION}/configs InnerEyeCam/ML
+mkdir -p InnerEyeCam/ML
+cp -rp InnerEyeCam/${INNEREYE_VERSION}/ML/configs InnerEyeCam/ML/configs
 
 # Copy modified environment file from InnerEyeCam to InnerEye-DeepLearning.
 cp InnerEyeCam/${INNEREYE_VERSION}/environment.yml ./environment.yml
