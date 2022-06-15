@@ -16,13 +16,21 @@ cd ..
 cp -rp InnerEyeCam InnerEye-DeepLearning
 
 # Copy modified files from InnerEyeCam/ML to InnerEye/ML.
-FILES="model_testing.py\
-       dataset/full_image_dataset.py\
-       visualizers/plot_cross_validation.py"
+case ${INNEREYE_VERSION} in
+	v0.3)
+		FILES="model_testing.py\
+			dataset/full_image_dataset.py\
+			visualizers/plot_cross_validation.py"
+		;;
+	*)
+		FILES="model_testing.py\
+			dataset/full_image_dataset.py"
+		;;
+esac
 cd InnerEye-DeepLearning
 for FILE in ${FILES}
 do
-       	cp InnerEyeCam/ML/${INNEREYE_VERSION}/${FILE} InnerEye/ML/${FILE}
+       	cp InnerEyeCam/${INNEREYE_VERSION}/ML/${FILE} InnerEye/ML/${FILE}
 done
 
 # Copy model configuration files from InnerEyeCam/${INNEREYE_VERSION}
