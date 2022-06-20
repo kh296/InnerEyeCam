@@ -38,11 +38,19 @@ done
 mkdir -p InnerEyeCam/ML
 cp -rp InnerEyeCam/${INNEREYE_VERSION}/ML/configs InnerEyeCam/ML/configs
 
-# Copy modified environment file from InnerEyeCam to InnerEye-DeepLearning.
+# Copy modified environment file(s) from InnerEyeCam to InnerEye-DeepLearning.
 cp InnerEyeCam/${INNEREYE_VERSION}/environment.yml ./environment.yml
+SRC=InnerEyeCam/${INNEREYE_VERSION}/primary_deps_mac.yml
+if [[ -e ${SRC} ]]; then
+    cp ${SRC} ./primary_deps_mac.yml
+fi
 
 # Create conda environment for running InnerEye-DeepLearning applications.
 source InnerEyeCam/conda-setup.sh
 conda env remove --name InnerEyeCam
-conda env create
+if [[ "$(uname)" == "Darwin" && ${INNEREYE_VERSION} != "v0.3" ]]; then
+    conda env create --file primary_deps_mac.yml
+else
+    conda env create --file environment.yml
+fi
 conda activate InnerEyeCam
