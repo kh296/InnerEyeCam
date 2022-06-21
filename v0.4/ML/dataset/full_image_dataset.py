@@ -191,6 +191,12 @@ class GeneralDataset(Dataset, ABC, Generic[D]):
                 shuffle = False
             else:
                 sampler = None
+            # KH modification - start
+            if num_dataload_workers:
+                multiprocessing_context=get_context('spawn')
+            else:
+                multiprocessing_context=None
+            # KH modification - end
             return DataLoader(
                 self,
                 batch_size=batch_size,
@@ -201,7 +207,7 @@ class GeneralDataset(Dataset, ABC, Generic[D]):
                 sampler=sampler,  # type: ignore
                 # KH modification - start
                 drop_last=drop_last_batch,
-                multiprocessing_context=get_context('spawn')
+                multiprocessing_context=multiprocessing_context,
                 # drop_last=drop_last_batch
                 # KH modification - end
             )

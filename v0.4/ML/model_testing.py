@@ -175,7 +175,11 @@ def segmentation_model_test_epoch(config: SegmentationModelBase,
     # Evaluate model generated segmentation maps.
     num_workers = min(cpu_count(), len(ds))
     # KH modification - start
-    with get_context("spawn").Pool(processes=num_workers) as pool:
+    if num_workers > 1:
+        new_pool = get_context("spawn").Pool(processes=num_workers)
+    else:
+        new_pool = Pool(processes=num_workers)
+    with new_pool as pool:
     # with Pool(processes=num_workers) as pool:
     # KH modification - end
         pool_outputs = pool.map(
