@@ -1,13 +1,13 @@
 #!/bin/bash
 
 # Set InnerEye version
-INNEREYE_VERSION="v0.3"
+INNEREYE_VERSION="v0.4"
 
 # Clone the InnerEye-DeepLearning repository, deleting any pre-existing clone,
 # then checkout required version.
 cd ..
 rm -rf InnerEye-DeepLearning
-git clone https://github.com/microsoft/InnerEye-DeepLearning
+git clone --recursive https://github.com/microsoft/InnerEye-DeepLearning
 cd InnerEye-DeepLearning
 git checkout ${INNEREYE_VERSION}
 
