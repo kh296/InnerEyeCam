@@ -54,18 +54,20 @@ actual location.
 
    This performs the following operations:
    
-    - It clones [InnerEye-DeepLearning](https://github.com/microsoft/InnerEye-DeepLearning) into the same directory as `InnerEyeCam`, deleting any pre-existing clone, then check out the version tagged v0.3.
+    - It clones [InnerEye-DeepLearning](https://github.com/microsoft/InnerEye-DeepLearning) into the same directory as `InnerEyeCam`, deleting any pre-existing clone.
 
-    - It recursviely copies the `InnerEyeCam` directory to
+    -If, in the script, `CHECKOUT_VERSION` is set to 1, then the version of the code specified by `INNEREYE_VERSION` is checked out.
+
+    - It recursively copies the `InnerEyeCam` directory to
       `InnerEye-DeepLearning'.
 
-    - Within `InnerEye-DeepLearning`, It copies from `InnerEyeCam/ML`
+    - Within `InnerEye-DeepLearning`, It copies from `InnerEyeCam/v0.x/ML`
       to `InnerEye/ML` the files:
 
       ```
       model_testing.py
       dataset/full_image_dataset.py
-      visualizers/plot_cross_validation.py
+      visualizers/plot_cross_validation.py # version v0.3 only
       ```
 
       The first two have changes with respect to the [InnerEye-DeepLearning](https://github.com/microsoft/InnerEye-DeepLearning) originals,
@@ -73,7 +75,8 @@ actual location.
       to avoid crashes in cases of datasets with CSV_SERIES_HEADER and/or
       CSV_INSTITUTION_HEADER undefined.
 
-    - It copies `InnerEyeCam/environment.yml` to `InnerEye-DeepLearning`.
+    - It copies `InnerEyeCam/v0.x/environment.yml` and (v0.4 only)
+      `InnerEyeCam/v0.x/primary_deps_mac.yml to `InnerEye-DeepLearning`.
       
     - It creates a `conda` environment for running
       [InnerEye-DeepLearning](https://github.com/microsoft/InnerEye-DeepLearning)
@@ -110,7 +113,11 @@ actual location.
 
 # Performing a training run
 
-1. Execute the script `InnerEye-DeepLearning/InnerEyeCam/train.sh`.
+1. Edit `InnerEye-DeepLearning/InnerEyeCam/runner.py`, and ensure that the
+   value of `innereye_version` matches the version of `InnerEye-DeepLearning`
+   installed.
 
-2. If submitting to Azure, progress can be monitored at:
+2. Execute the script `InnerEye-DeepLearning/InnerEyeCam/train.sh`.
+
+3. If submitting to Azure, progress can be monitored at:
    - [https://ml.azure.com/](https://ml.azure.com/)
