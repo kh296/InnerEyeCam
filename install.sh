@@ -28,10 +28,12 @@ case ${INNEREYE_VERSION} in
 		;;
 esac
 cd InnerEye-DeepLearning
-for FILE in ${FILES}
-do
+if [[ "$(uname)" == "Darwin" ]]; then
+    for FILE in ${FILES}
+    do
        	cp InnerEyeCam/${INNEREYE_VERSION}/ML/${FILE} InnerEye/ML/${FILE}
-done
+    done
+fi
 
 # Copy model configuration files from InnerEyeCam/${INNEREYE_VERSION}
 # to InnerEye-DeepLearning/InnerEyeCam
