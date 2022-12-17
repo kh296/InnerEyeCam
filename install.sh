@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Set InnerEye version
-INNEREYE_VERSION="v0.4"
+INNEREYE_VERSION="v0.8"
 
 # Clone the InnerEye-DeepLearning repository, deleting any pre-existing clone,
 # then checkout required version.
@@ -54,3 +54,7 @@ else
     conda env create --file environment.yml
 fi
 conda activate InnerEyeCam
+
+if [[ "$(uname)" == "Darwin" ]]; then
+    pip install azureml-sdk[notebooks]
+fi

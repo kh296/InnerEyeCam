@@ -11,7 +11,9 @@ conda activate InnerEyeCam
 # (https://black.readthedocs.io/en/stable/index.html).
 # This seems to prevent some crashes that otherwise
 # occur - reason not understood.
-black -q ${CONDA_PREFIX}/lib/python3.7/site-packages/black/cache.py
+PYTHON=$(python --version)
+PYTHON=python${PYTHON:7:3}
+black -q ${CONDA_PREFIX}/lib/${PYTHON}/site-packages/black/cache.py
 
 # Run InnerEye-DeepLearning application.
 
@@ -43,7 +45,7 @@ black -q ${CONDA_PREFIX}/lib/python3.7/site-packages/black/cache.py
 #    in workspace defined in settings.yml.
 # --monitoring_interval_seconds=120: Check progress every 120 seconds.
 # --experiment_name: Define name for this training run (experiment).
-python runner.py --azureml=True --model=HeadAndNeckAB_OSAI_001_smg --num_epoch=30 --train=True --number_of_cross_validation_splits=2 --cluster=NC24 --monitoring_interval_seconds=120 --experiment_name=head_and_neck_ab_osai_001_smg_30_epochs_2_splits
+#python runner.py --azureml=True --model=HeadAndNeckAB_OSAI_001_smg --num_epoch=30 --train=True --number_of_cross_validation_splits=2 --cluster=NC24 --monitoring_interval_seconds=120 --experiment_name=head_and_neck_ab_osai_001_smg_30_epochs_2_splits
 
 # Run training locally.
 # --azureml=False: Don't submit to Azure.
@@ -53,4 +55,4 @@ python runner.py --azureml=True --model=HeadAndNeckAB_OSAI_001_smg --num_epoch=3
 # --number_of_cross_validation_splits=0: Don't perform cross validation.
 # --monitoring_interval_seconds=120: Check progress every 120 seconds.
 # --experiment_name: Define name for this training run (experiment).
-#python runner.py --azureml=False --model=HeadAndNeckAB_PartIII_001_smg_Local --num_epoch=30 --train=True --number_of_cross_validation_splits=0 --monitoring_interval_seconds=120 --experiment_name=head_and_neck_ab_partiii_001_local_30_epochs_0_splits
+python runner.py --azureml=False --model=HeadAndNeckAB_PartIII_001_smg_Local --num_epoch=3 --train=True --number_of_cross_validation_splits=0 --monitoring_interval_seconds=120 --experiment_name=head_and_neck_ab_partiii_001_local_30_epochs_0_splits
